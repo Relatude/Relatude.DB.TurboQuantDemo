@@ -12,7 +12,7 @@
             <h1>Relatude.DB with TurboQuad from Google Research in C#</h1>
             <p>
                 This experiment contains 30 000 wikipedia articles indexed in a vector database with 3072 dimensions from OpenAI (text-embedding-3-large).
-                The sample contains two database instances, one using a basic flat vector index, the other the new <a target="_blank" href="https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/">TurboQuant</a> algorithm.
+                The example contains two database instances, to compare the difference using a basic flat vector index, and the new <a target="_blank" href="https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/">TurboQuant</a> algorithm from Google Research.
             </p>
             <p>
                 <a target="_blank" href="https://github.com/Relatude/Relatude.DB">Relatude.DB</a> is an opensource C# native database under development.
@@ -21,9 +21,10 @@
             </p>
             <p>
                 The TurboQuant algorithm reduce the memory by a factor of around 3x while maintaining most of the speed.
-                (On my local machine turboquad is faster, on this Azure hosting, it is slower than the flat index, not sure why...)
+                (On my local machine turboquad search is faster than the flat index. On this hosting server, it is slower for some reason.)
                 The search is a "brute force" implementation, and all 30 000 vectors are compared with the query vector,
-                there is no partitioning or clustering of the vectors. It is multithreaded and the query cache is off.
+                there is no partitioning or clustering of the vectors. This is just a first attempt and optimzation is possible, but it is already impressive to see how much memory can be saved with this approach while maintaining good search quality.
+                (It is running with 4096 dimensions, where 1024 is padded, 3 bits, 200 000 initial training )
             </p>
         </header>
 
